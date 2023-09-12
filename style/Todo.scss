@@ -1,0 +1,22 @@
+.todoContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 0;
+}
+.todoBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  background-color: #e5e5e5;
+  min-width: 500px;
+  padding: 15px;
+  margin: 10px 0;
+}
+.checkboxTodo {
+    width: auto;
+    margin-right: 10px
+}
