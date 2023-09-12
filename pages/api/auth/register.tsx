@@ -11,7 +11,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
   try {
     const { name, email, password } = JSON.parse(req.body);
-    console.log(req.body);
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 

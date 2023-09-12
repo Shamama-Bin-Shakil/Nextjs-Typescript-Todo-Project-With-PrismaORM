@@ -14,12 +14,12 @@ const TodoAdd = () => {
 
     if(title === "" || text === "") return
 
-    const response = await fetch(`https://prismatodo.vercel.app/api/newtodo`, {
+    const response = await fetch(`/api/newtodo`, {
       method: "POST",
       body: JSON.stringify({ title, text }),
     });
     const result = await response.json();
-    if (result) {
+    if (result.success === true) {
       Swal.fire({
         title: 'Success!',
         text: 'Todo Add Successfully',

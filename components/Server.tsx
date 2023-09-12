@@ -7,7 +7,7 @@ const ListTodo = (todo: TodoProps) => {
 
   async function deleteTodo(id: string) {
     // alert("welcome" + id)
-    const response = await fetch(`https://prismatodo.vercel.app/api/task/deletetask?id=${id}`, {method: "GET"});
+    const response = await fetch(`/api/task/deletetask?id=${id}`, {method: "GET"});
     const result = await response.json();
     console.log(result);
     if(result){
@@ -16,7 +16,7 @@ const ListTodo = (todo: TodoProps) => {
   }
 
   async function changeComplete(id: string) {
-    const response = await fetch(`https://prismatodo.vercel.app/api/task/changecomplete?id=${id}`, {method: "POST", body: JSON.stringify({iscomplete: !todo.complete})});
+    const response = await fetch(`/api/task/changecomplete?id=${id}`, {method: "POST", body: JSON.stringify({iscomplete: !todo.complete})});
     const result = await response.json();
     console.log(result);
     if(result){
