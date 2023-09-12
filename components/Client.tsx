@@ -19,7 +19,7 @@ export type User = {
 export type PassValue = {
   todo: Todo[];
   user: {};
-  setUser: boolean;
+  setUser: any;
 };
 
 export const ContextProvider = createContext<PassValue | null>(null);
