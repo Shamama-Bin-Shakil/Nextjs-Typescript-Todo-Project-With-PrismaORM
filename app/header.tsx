@@ -15,7 +15,7 @@ const Header = () => {
 
         <Link href="/">Home</Link>
         
-        {!data.user ? (<> <Link href="/login">Login</Link>
+        {data.user === false ? (<> <Link href="/login">Login</Link>
         <Link href="/register">Register</Link> </>) :
         data.user && <Button />}
 
