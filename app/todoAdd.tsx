@@ -14,7 +14,7 @@ const TodoAdd = () => {
 
     if(title === "" || text === "") return
 
-    const response = await fetch("http://localhost:3000/api/newtodo", {
+    const response = await fetch(`${process.env.BASE_URL}/api/newtodo`, {
       method: "POST",
       body: JSON.stringify({ title, text }),
     });

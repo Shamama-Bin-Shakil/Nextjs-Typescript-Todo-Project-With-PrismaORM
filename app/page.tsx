@@ -40,7 +40,6 @@ const Page = () => {
               key={index}
               id={i.id}
               title={i.title}
-              // deleteTodo={deleteTodo(i.id)}
               text={i.text}
               complete={i.complete}
             />

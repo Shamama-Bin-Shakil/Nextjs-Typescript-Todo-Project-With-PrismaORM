@@ -29,7 +29,7 @@ const Context = ({ children }: ChildrenProp) => {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/auth/me", { method: "GET" })
+    fetch(`${process.env.BASE_URL}/api/auth/me`, { method: "GET" })
       .then((res) => res.json())
       .then((data) => setUser(data.success));
   }, []);
@@ -48,7 +48,7 @@ export const Button = () => {
   const data = useContext(ContextProvider)
   async function Logout() {
     alert("logout");
-      const response = await fetch("http://localhost:3000/api/auth/logout", {
+      const response = await fetch(`${process.env.BASE_URL}/api/auth/logout`, {
         method: "GET"
       })
       const result = await response.json();

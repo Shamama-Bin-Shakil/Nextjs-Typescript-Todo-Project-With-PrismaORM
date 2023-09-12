@@ -9,7 +9,7 @@ const Header = () => {
   return (
     <nav>
       <div className="logo">
-        <h1>My Website</h1>
+        <h1>My Todo App</h1>
       </div>
       <div className="menu">
         <Link href="/">Home</Link>
