@@ -16,7 +16,7 @@ export interface TodoProps {
   // deleteTodo: (id: string) => void;
 }
 
-const page = () => {
+const Page = () => {
   const data = useContext(ContextProvider);
   const [todo, setTodo] = useState([]);
 
@@ -50,4 +50,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

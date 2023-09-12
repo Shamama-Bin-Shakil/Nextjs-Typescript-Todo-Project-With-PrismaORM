@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { FormEvent, useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-const page = () => {
+const Page = () => {
 
   const data = useContext(ContextProvider)
 
@@ -68,4 +68,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
