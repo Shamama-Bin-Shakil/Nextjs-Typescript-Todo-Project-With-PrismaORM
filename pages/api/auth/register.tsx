@@ -10,7 +10,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return errorHandler(res, 400, "ONLY POST METHOD IS ALLOWED");
   }
   try {
-    const { name, email, password } = JSON.parse(req.body);
+    const { name, email, password } = req.body;
+
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
 
