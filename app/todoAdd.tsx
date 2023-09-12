@@ -14,7 +14,7 @@ const TodoAdd = () => {
 
     if(title === "" || text === "") return
 
-    const response = await fetch(`${process.env.BASE_URL}/api/newtodo`, {
+    const response = await fetch(`https://prismatodo.vercel.app/api/newtodo`, {
       method: "POST",
       body: JSON.stringify({ title, text }),
     });
