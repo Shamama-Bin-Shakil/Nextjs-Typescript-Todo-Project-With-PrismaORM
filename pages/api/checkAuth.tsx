@@ -1,9 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import jwt from "jsonwebtoken";
 import prisma from "@/utils/db";
-type Get = {
-  id: string;
-};
+
 export const checkAuth = async (req: NextApiRequest, res: NextApiResponse) => {
   if (!req.headers.cookie) {
     return res.status(400).json({ success: false, msg: "Access Denied" });
