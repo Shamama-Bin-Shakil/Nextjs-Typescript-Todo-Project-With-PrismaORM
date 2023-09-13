@@ -5,11 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "prisma migrate deploy && next build",
-    "start": "next start --port ${PORT-3000}",
-    "migrate:dev": "prisma migrate dev",
-    "migrate:deploy": "prisma migrate deploy",
-    "migrate:status": "prisma migrate status",
-    "generate": "prisma generate",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
