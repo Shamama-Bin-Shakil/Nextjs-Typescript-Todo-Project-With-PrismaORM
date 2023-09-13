@@ -19,20 +19,20 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return errorHandler(res, 400, "ONLY POST METHOD IS ALLOWED");
     }
 
-    const isLoginUser = await checkAuth(req, res);
+    // const isLoginUser = await checkAuth(req, res);
 
-    // const todo = await prisma.todo.create({
-    //   data: {
-    //     title: title,
-    //     text: text,
-    //     createAt: new Date(),
-    //     userId: isLoginUser?.id,
-    //   },
-    // });
+    const todo = await prisma.todo.create({
+      data: {
+        title: title,
+        text: text,
+        createAt: new Date(),
+        // userId: isLoginUser?.id,
+      },
+    });
 
     return res
       .status(200)
-      .json({ success: true, message: "Todo Create Successfully", isLoginUser });
+      .json({ success: true, message: "Todo Create Successfully" });
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });
   }
