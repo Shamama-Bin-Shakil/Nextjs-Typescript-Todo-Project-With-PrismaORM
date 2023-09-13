@@ -16,7 +16,7 @@ model Todo {
   text     String
   complete Boolean @default(false)
   userTodo User[]
-  userId   String
+  userId   String?
   createAt   DateTime @default(now())
 }
 

@@ -6,7 +6,7 @@ import { checkAuth } from "./checkAuth";
 export interface FormDataValue {
   title: string;
   text: string;
-  userId: string | undefined;
+  userId: string | null;
   create: Date;
 }
 
@@ -29,7 +29,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         userId: isLoginUser?.id,
       },
     });
-    return res.status(200).json({ success: true, message: "Todo Create Successfully", data: todo });
+    return res
+      .status(200)
+      .json({ success: true, message: "Todo Create Successfully", data: todo });
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });
   }
