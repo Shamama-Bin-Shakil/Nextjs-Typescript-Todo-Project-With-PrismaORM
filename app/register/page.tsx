@@ -14,7 +14,7 @@ const Page = () => {
 
   const FormSubmitHandler = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await fetch(`https://prismatodos.vercel.app/api/auth/register`, {
+    const response = await fetch(`/api/auth/register`, {
       method: "POST",
       body: JSON.stringify({ name, email, password }),
     });
