@@ -26,7 +26,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         title: title,
         text: text,
         createAt: new Date(),
-        // userId: isLoginUser?.id,
+        userId: "123asds21123asd3",
       },
     });
 
