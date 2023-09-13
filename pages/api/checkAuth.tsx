@@ -7,8 +7,9 @@ export const checkAuth = async (req: NextApiRequest, res: NextApiResponse) => {
     return res.status(400).json({ success: false, msg: "Access Denied" });
   }
   const cook = req.headers.cookie?.split("=")[1];
-  return res.json({cook})
-  // const useId:any = jwt.verify(cook, process.env.SECRET_KEY!);
+  const useId:any = jwt.verify(cook, process.env.SECRET_KEY!);
+  return res.json({useId})
+
   // const user = await prisma.user.findFirst({
   //   where: { id: useId.id },
   // });
