@@ -29,9 +29,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         userId: isLoginUser?.id,
       },
     });
+    
     return res
       .status(200)
-      .json({ success: true, message: "Todo Create Successfully", data: todo });
+      .json({ success: true, message: "Todo Create Successfully", data: todo, isLoginUser });
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });
   }

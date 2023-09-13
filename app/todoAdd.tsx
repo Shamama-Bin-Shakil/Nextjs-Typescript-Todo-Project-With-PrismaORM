@@ -19,6 +19,7 @@ const TodoAdd = () => {
       body: JSON.stringify({ title, text }),
     });
     const result = await response.json();
+    console.log(result);
     if (result.success === true) {
       Swal.fire({
         title: 'Success!',
