@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "migrate": "npx prisma migrate deploy",
-    "build": "next build",
-    "start": "next start",
+    "build": "yarn migrate:deploy && next build",
+    "start": "next start --port ${PORT-3000}",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:status": "prisma migrate status",
+    "generate": "prisma generate",
     "lint": "next lint"
   },
   "dependencies": {
