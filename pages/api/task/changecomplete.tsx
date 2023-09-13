@@ -6,26 +6,25 @@ import { checkAuth } from "../checkAuth";
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { iscomplete } = JSON.parse(req.body);
-    const { id } = req.query;
+    const d = req.query;
     // Not Exist Mehthod == POST Condition
 
-    console.log(id);
     if (req.method !== "POST") {
       return errorHandler(res, 400, "ONLY POST METHOD IS ALLOWED");
     }
 
     const isLoginUser = await checkAuth(req, res);
 
-    const todo: { id: string } = await prisma.todo.update({
-      where: { 
-        id: id
-       },
-       data: {
-        complete: iscomplete
-       }
+    const todo = await prisma.todo.update({
+      data: {
+        complete: iscomplete,
+      },
+      where: {id: String(d.id)},
     });
 
-    return res.status(200).json({ message: "Todo Status Change Successfully", todo });
+    return res
+      .status(200)
+      .json({ message: "Todo Status Change Successfully", todo });
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });
   }
