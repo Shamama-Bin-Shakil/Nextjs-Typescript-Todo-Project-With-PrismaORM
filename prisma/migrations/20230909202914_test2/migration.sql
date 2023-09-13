@@ -1,5 +1,0 @@
--- AlterTable
-ALTER TABLE `user` ADD COLUMN `todoId` VARCHAR(191) NULL;
-
--- AddForeignKey
-ALTER TABLE `User` ADD CONSTRAINT `User_todoId_fkey` FOREIGN KEY (`todoId`) REFERENCES `Todo`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
