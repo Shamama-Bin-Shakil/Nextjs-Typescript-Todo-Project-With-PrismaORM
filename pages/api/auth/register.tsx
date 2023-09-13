@@ -10,31 +10,31 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return errorHandler(res, 400, "ONLY POST METHOD IS ALLOWED");
   }
   try {
-    const { name, email, password } = JSON.parse(req.body);
+    // const { name, email, password } = JSON.parse(req.body);
 
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash(password, salt);
+    // const salt = await bcrypt.genSalt(10);
+    // const hash = await bcrypt.hash(password, salt);
 
-    const user = await prisma.user.findFirst({
-      where: { email },
-    });
+    // const user = await prisma.user.findFirst({
+    //   where: { email },
+    // });
 
-    if (user) {
-      return errorHandler(res, 400, "User Already Exist");
-    }
+    // if (user) {
+    //   return errorHandler(res, 400, "User Already Exist");
+    // }
 
-    const userRegister = await prisma.user.create({
-      data: {
-        name,
-        email,
-        password: hash,
-        create: new Date(),
-      },
-    });
+    // const userRegister = await prisma.user.create({
+    //   data: {
+    //     name,
+    //     email,
+    //     password: hash,
+    //     create: new Date(),
+    //   },
+    // });
 
-    const token: string = JWTToken({ id: userRegister.id });
+    // const token: string = JWTToken({ id: userRegister.id });
 
-    cookieSetter(res, token, true);
+    // cookieSetter(res, token, true);
 
     res
       .status(200)
