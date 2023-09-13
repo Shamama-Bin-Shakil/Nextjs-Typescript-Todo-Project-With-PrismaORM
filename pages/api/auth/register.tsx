@@ -19,18 +19,18 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       where: { email },
     });
 
-    // if (user) {
-    //   return errorHandler(res, 400, "User Already Exist");
-    // }
+    if (user) {
+      return errorHandler(res, 400, "User Already Exist");
+    }
 
-    // const userRegister = await prisma.user.create({
-    //   data: {
-    //     name,
-    //     email,
-    //     password: hash,
-    //     create: new Date(),
-    //   },
-    // });
+    const userRegister = await prisma.user.create({
+      data: {
+        name,
+        email,
+        password: hash,
+        create: new Date(),
+      },
+    });
 
     // const token: string = JWTToken({ id: userRegister.id });
 
