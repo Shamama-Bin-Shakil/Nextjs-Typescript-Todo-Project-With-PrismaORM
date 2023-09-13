@@ -32,13 +32,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     });
 
-    // const token: string = JWTToken({ id: userRegister.id });
+    const token: string = JWTToken({ id: userRegister.id });
 
-    // cookieSetter(res, token, true);
+    cookieSetter(res, token, true);
 
     res
       .status(200)
-      .json({ success: true, message: "User Created Succesfully", data: name, email, password, prismas: user});
+      .json({ success: true, message: "User Created Succesfully"});
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });
   }
