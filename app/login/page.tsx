@@ -19,6 +19,7 @@ const Page = () => {
       body: JSON.stringify({ email, password }),
     });
     const result = await response.json();
+    console.log(result);
     if(result.success === true) {
       Swal.fire({
         title: 'Success!',

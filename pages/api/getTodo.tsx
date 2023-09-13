@@ -14,7 +14,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const userTodo = await prisma.todo.findMany({ where: { userId: users?.id } });
 
-    res.json({ success: true, userTodo });
+    res.status(200).json({ success: true, userTodo });
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });
   }

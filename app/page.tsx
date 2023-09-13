@@ -25,7 +25,7 @@ const Page = () => {
       redirect("/login");
     }
 
-    fetch("http://localhost:3000/api/getTodo", { method: "GET" })
+    fetch("/api/getTodo", { method: "GET" })
       .then((res) => res.json())
       .then((data) => setTodo(data.userTodo));
   }, [data]);
