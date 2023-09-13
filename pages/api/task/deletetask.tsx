@@ -17,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const todo: { id: string } = await prisma.todo.delete({
       where: { 
-        id: id
+        id: String(id)
        },
     });
 
