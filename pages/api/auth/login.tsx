@@ -10,25 +10,25 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     return errorHandler(res, 400, "ONLY POST METHOD IS ALLOWED");
   }
   try {
-    const { email, password } = JSON.parse(req.body);
+    // const { email, password } = JSON.parse(req.body);
 
-    const user = await prisma.user.findFirst({
-      where: { email },
-    });
+    // const user = await prisma.user.findFirst({
+    //   where: { email },
+    // });
 
-    if (!user) {
-      return errorHandler(res, 400, "Invalid Crendential");
-    }
+    // if (!user) {
+    //   return errorHandler(res, 400, "Invalid Crendential");
+    // }
 
-    const isPasswordMatch = await bcrypt.compare(password, user.password);
+    // const isPasswordMatch = await bcrypt.compare(password, user.password);
 
-    if (!isPasswordMatch) {
-      return errorHandler(res, 400, "Invalid Crendential");
-    }
+    // if (!isPasswordMatch) {
+    //   return errorHandler(res, 400, "Invalid Crendential");
+    // }
 
-    const token: string = JWTToken({ id: user.id });
+    // const token: string = JWTToken({ id: user.id });
 
-    cookieSetter(res, token, true);
+    // cookieSetter(res, token, true);
 
     res.status(200).json({
         success: true,
