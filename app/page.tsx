@@ -25,9 +25,13 @@ const Page = () => {
       redirect("/login");
     }
 
+    // if (localStorage.getItem("token") === "") {
+    //   redirect("/login");
+    // }
+
     fetch("/api/getTodo", {
       method: "GET",
-      headers: { 'token': localStorage.getItem("token") || "" },
+      headers: { token: localStorage.getItem("token") || "" },
     })
       .then((res) => res.json())
       .then((data) => {

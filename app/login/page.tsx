@@ -41,7 +41,6 @@ const Page = () => {
 
   useEffect(() => {
     if (data?.user === true) {
-
       redirect("/");
     }
   }, [data]);

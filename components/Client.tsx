@@ -1,4 +1,5 @@
 "use client";
+import { useRouter } from "next/navigation";
 import {
   ReactNode,
   createContext,
@@ -6,7 +7,6 @@ import {
   useState,
   useContext,
 } from "react";
-import { redirect } from "next/navigation";
 
 export type ChildrenProp = {
   children: ReactNode;
@@ -44,7 +44,7 @@ const Context = ({ children }: ChildrenProp) => {
     })
       .then((res) => res.json())
       .then((data) => setUser(data.success));
-  }, []);
+  }, [user]);
 
   return (
     <ContextProvider.Provider value={{ todo, user, setUser }}>
@@ -54,18 +54,13 @@ const Context = ({ children }: ChildrenProp) => {
 };
 
 export const Button = () => {
+  const router = useRouter();
   const data = useContext(ContextProvider);
-  async function Logout() {
+  function Logout() {
     alert("logout");
-    // const response = await fetch(`/api/auth/logout`, {
-    //   method: "GET",
-    // });
-    // const result = await response.json();
-    const result: any = localStorage.removeItem("token");
-    if (result) {
-      data?.setUser(false);
-      redirect("/login");
-    }
+    const result: any = localStorage.setItem("token", "");
+    data?.setUser(false);
+    router.push("/login");
   }
   return <button onClick={Logout}>Logout</button>;
 };
