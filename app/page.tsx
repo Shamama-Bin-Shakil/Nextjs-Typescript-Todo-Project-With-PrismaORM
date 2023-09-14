@@ -25,9 +25,15 @@ const Page = () => {
       redirect("/login");
     }
 
-    fetch("/api/getTodo", { method: "GET" })
+    fetch("/api/getTodo", {
+      method: "GET",
+      headers: { 'token': localStorage.getItem("token") || "" },
+    })
       .then((res) => res.json())
-      .then((data) => setTodo(data.userTodo));
+      .then((data) => {
+        setTodo(data.userTodo);
+        console.log(data);
+      });
   }, [data]);
 
   return (

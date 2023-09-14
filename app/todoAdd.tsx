@@ -17,6 +17,9 @@ const TodoAdd = () => {
     const response = await fetch(`/api/newtodo`, {
       method: "POST",
       body: JSON.stringify({ title, text }),
+      headers: {
+        'token': localStorage.getItem('token') || ""
+      },
     });
     const result = await response.json();
     console.log(result);

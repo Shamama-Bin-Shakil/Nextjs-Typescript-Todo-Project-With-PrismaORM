@@ -19,7 +19,8 @@ const Page = () => {
       body: JSON.stringify({ email, password }),
     });
     const result = await response.json();
-    console.log(result);
+    // console.log(result);
+    localStorage.setItem("token", result.token)
     if(result.success === true) {
       Swal.fire({
         title: 'Success!',

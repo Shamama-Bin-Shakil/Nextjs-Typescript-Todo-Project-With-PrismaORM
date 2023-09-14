@@ -10,11 +10,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       return errorHandler(res, 400, "ONLY GET METHOD IS ALLOWED");
     }
 
-    // const users = await checkAuth(req, res);
+    const users = await checkAuth(req, res);
 
-    // const userTodo = await prisma.todo.findMany({ where: { userId: users?.id } });
+    const userTodo = await prisma.todo.findMany({ where: { userId: users?.id } });
 
-    // res.status(200).json({ success: true, userTodo });
+    res.status(200).json({ success: true, userTodo });
+    
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });
   }

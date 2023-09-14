@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.status(200).json({
       success: true,
-      //   message: "Login Successfully",
+        // message: "Login Successfully",
     });
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });

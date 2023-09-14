@@ -28,7 +28,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     const token: string = JWTToken({ id: user.id });
 
-    cookieSetter(res, token, true);
+    // cookieSetter(res, token, true);
+    
+
 
     res.status(200).json({
         success: true,

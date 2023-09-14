@@ -20,19 +20,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const isLoginUser = await checkAuth(req, res);
-
-    // const todo = await prisma.todo.create({
-    //   data: {
-    //     title: title,
-    //     text: text,
-    //     createAt: new Date(),
-    //     userId: "123asds21123asd3",
-    //   },
-    // });
+    console.log(isLoginUser);
+    const todo = await prisma.todo.create({
+      data: {
+        title: title,
+        text: text,
+        createAt: new Date(),
+        userId: isLoginUser?.id,
+      },
+    });
 
     return res
       .status(200)
-      .json({ success: true, message: "Todo Create Successfully" });
+      .json({ success: true, message: "Todo Create Successfully", data: todo });
 
   } catch (error: any) {
     return res.status(500).json({ success: false, message: error.message });
