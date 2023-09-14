@@ -6,6 +6,7 @@ import {
   useState,
   useContext,
 } from "react";
+import { redirect } from "next/navigation";
 
 export type ChildrenProp = {
   children: ReactNode;
@@ -60,9 +61,10 @@ export const Button = () => {
     //   method: "GET",
     // });
     // const result = await response.json();
-    const result: any = localStorage.removeItem('token');
+    const result: any = localStorage.removeItem("token");
     if (result) {
       data?.setUser(false);
+      redirect("/login");
     }
   }
   return <button onClick={Logout}>Logout</button>;
