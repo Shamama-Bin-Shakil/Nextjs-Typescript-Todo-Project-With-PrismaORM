@@ -1,5 +1,11 @@
 "use client";
-import { ReactNode, createContext, useEffect, useState, useContext } from "react";
+import {
+  ReactNode,
+  createContext,
+  useEffect,
+  useState,
+  useContext,
+} from "react";
 
 export type ChildrenProp = {
   children: ReactNode;
@@ -29,12 +35,15 @@ const Context = ({ children }: ChildrenProp) => {
   const [user, setUser] = useState(false);
 
   useEffect(() => {
-    fetch(`/api/auth/me`, { method: "GET" })
+    fetch(`/api/auth/me`, {
+      method: "GET",
+      headers: {
+        token: localStorage.getItem("token") || "",
+      },
+    })
       .then((res) => res.json())
       .then((data) => setUser(data.success));
   }, []);
-
- 
 
   return (
     <ContextProvider.Provider value={{ todo, user, setUser }}>
@@ -43,18 +52,18 @@ const Context = ({ children }: ChildrenProp) => {
   );
 };
 
-
 export const Button = () => {
-  const data = useContext(ContextProvider)
+  const data = useContext(ContextProvider);
   async function Logout() {
     alert("logout");
-      const response = await fetch(`/api/auth/logout`, {
-        method: "GET"
-      })
-      const result = await response.json();
-      if(result) {
-        data?.setUser(false);
-      }
+    // const response = await fetch(`/api/auth/logout`, {
+    //   method: "GET",
+    // });
+    // const result = await response.json();
+    const result: any = localStorage.removeItem('token');
+    if (result) {
+      data?.setUser(false);
+    }
   }
   return <button onClick={Logout}>Logout</button>;
 };

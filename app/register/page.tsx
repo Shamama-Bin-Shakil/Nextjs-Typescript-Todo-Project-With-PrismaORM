@@ -20,6 +20,8 @@ const Page = () => {
     });
     const result = await response.json();
     console.log(result);
+    localStorage.setItem("token", result.token)
+
     if(result.success === true) {
       data?.setUser(result.success)
       Swal.fire({
